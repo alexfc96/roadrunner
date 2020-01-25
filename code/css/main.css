@@ -1,0 +1,17 @@
+html,body{
+    margin:0px;
+    height:100%;
+    }
+h1{
+    text-align: center;
+}
+#space-game{
+    height: 70%;
+    margin: 3% 15% ; /*solid 1px*/
+    border-style: solid;
+}
+
+#my-game{
+    background-color: aqua;
+    height: 100%;
+}
