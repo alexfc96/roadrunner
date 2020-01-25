@@ -32,6 +32,11 @@ HTML, Vanilla Javasript ___DOM___ and CSS
 
 *Move player (righ, left, jump)
 
+*In this two last cases -> Game Over -> Show game Over Screen
+
+
+## Back log
+
 *Create obstacles
 
 *Check if colision
@@ -40,10 +45,6 @@ HTML, Vanilla Javasript ___DOM___ and CSS
 
 *Check if fall in a empty block
 
-*In this two last cases -> Game Over -> Show game Over Screen
-
-
-## Back log
 ### Music
 *Speed up the velocity of the game(every 20 or 30seconds)
 * Add background music to game
@@ -69,9 +70,8 @@ destroyGameOverScreen();
 let game = new Game({
     this.rows, //see 5 or 6 rows on the road?
     this.blocks,  //three blocks per rows
-    ctx: ctx,
     backgroundcolor = ["xxx","xxx","xxx"],
-    this.obstacles,
+    //this.obstacles,
     //this.generateStars,
     //this.emptyBlocks,
     this.player
@@ -81,30 +81,32 @@ game.start();
 
 __game.js__
 ````
-function game(options){};
-game.drawBoard();
-game.drawPlayer();
-game.generateStars();
-game.generateObstacles();
-//game.generateEmptyBlocks();
-game.gameOver();
-game.start();
-starsCollector //i am not sure if this is a function of the player
+class Game(options){
+drawBoard(){};
+drawPlayer();
+generateStars(){};
+generateObstacles();
+//generateEmptyBlocks();
+gameOver();
+start(){};
+}
 ````
 
 __player.js__
 ````
-function player(){
+class Player(){
     this.width;
     this.height; //i am not sure if i will need it
-    this.color:
+    this.color;
+    this.collectedStars
 };
-player.move();
+move();
+starsCollector()
 ````
 
 __obstacle.js__
 ````
-function obstacle(){
+class Obstacle(){
     this.width;
     this.height;
     extra :this.form; // differents objects? 
@@ -114,3 +116,4 @@ createObstacles();
 
 ## Links
 [Snake Game](https://)
+https://github.com/alexfc96/roadrunner
