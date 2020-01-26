@@ -49,10 +49,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         <button id="btn-replay-game" value="RESTART GAME">RESTART GAME</button>`
     }
     
+    //Esto creo que debería de ir en game.js(las llamadas a las funciones)
+    
     const startScreen = document.getElementById("start-screen");
-    const btnStartGameScreen = document.getElementById("btn-start-game");
-    btnStartGameScreen.addEventListener('click',createGameScreen);
+    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
     const gameScreen = document.getElementById("game-screen");
+    btnStartGameScreen.addEventListener('click',createGameScreen); //agregado pero comentado en el metodo setGameStartScreen() de game.js
     const gameOverScreen = document.getElementById("game-over-screen");
 
 })
