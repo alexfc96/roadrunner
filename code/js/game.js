@@ -4,14 +4,18 @@ class Game{
         this.heightScreen = undefined
     }
     setGameStartScreen(){
-        this.Main.createStartScreen()
+        this.Main.createStartScreen();
     }
-    drawBoard(){};
+    drawBoard(){
+        this.Main.createGameScreen();
+    };
     drawPlayer(){};
     generateStars(){};
     generateObstacles(){};
     //generateEmptyBlocks(){};
-    gameOver(){};
+    gameOver(){
+        this.Main.createGameOverScreen();
+    };
     start(){};
 }
 

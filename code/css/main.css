@@ -1,26 +1,56 @@
+/* Colors used:
+#7DBD9D //the color of the raod(blocks and for the buttons)
+
+*/
+
 html,body{
-    margin:0px;
-    height:100%;
-    }
+  margin:0px;
+  height:100%;
+  }
 h1{
-    text-align: center;
+  text-align: center;
 }
 #space-game{
-    height: 70%;
-    margin: 3% 15% ; /*solid 1px*/
-    border-style: solid;
+  height: 70%;
+  margin: 3% 15% ; /*solid 1px*/
+  border-style: solid;
 }
 #start-screen{
-  padding-top: 22%;
-  height: 100%;
-  text-align: center;
+padding-top: 22%;
+height: 100%;
+text-align: center;
 }
 #start-screen h2{
-  text-align: center;
-  color: red;
+text-align: center;
+color: red;
+}
+#start-screen #btn-start-game{
+  background-color: #7DBD9D;
 }
 
-#my-game{
-    background-color: aqua;
-    height: 100%;
+#game-screen{
+  background-color: aqua;
+  height: 100%;
+}
+
+.rows-blocks{
+  display: flex;
+  background-color: #7DBD9D;
+  border: 1px solid white;
+}
+.block{
+  display: flex;
+  flex-direction: row;
+  padding: 6%;
+  width: 33%;
+  border: 1px solid white;
+}
+#game-over-screen{
+  font-size: 24px;
+  text-align: center;
+  margin-top: 30%;
+}
+#game-over-screen #btn-replay-game {
+    font-size: 34px;
+    background-color: #7DBD9D;
 }
