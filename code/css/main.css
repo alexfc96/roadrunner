@@ -16,9 +16,10 @@ h1{
   border-style: solid;
 }
 #start-screen{
-padding-top: 22%;
+/*padding-top: 22%;*/
 height: 100%;
 text-align: center;
+background-color: pink;
 }
 #start-screen h2{
 text-align: center;
@@ -30,7 +31,8 @@ color: red;
 
 #game-screen{
   background-color: aqua;
-  height: 100%;
+
+
 }
 
 .rows-blocks{
@@ -41,7 +43,8 @@ color: red;
 .block{
   display: flex;
   flex-direction: row;
-  padding: 6%;
+  padding: 5%;
+  /*height: 6%;*/
   width: 33%;
   border: 1px solid white;
 }
@@ -49,6 +52,7 @@ color: red;
   font-size: 24px;
   text-align: center;
   margin-top: 30%;
+  height: 100%;
 }
 #game-over-screen #btn-replay-game {
     font-size: 34px;
