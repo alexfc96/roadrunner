@@ -44,18 +44,21 @@ class Player{
     goRight(){
         console.log("Girar hacia la derecha")
         //let myPosition = this.myInitialPosition;
-        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-        let rightPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(3)")
-        rightPosition.innerHTML = `<div class="player-block"></div>`
-        myPosition.innerHTML = `<div class="block"></div>`
+        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //select the actual position of the player
+        let rightPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(3)"); //the position where the player it will put
+        rightPosition.innerHTML = `<div class="player-block"></div>`;
+        myPosition.className = "block"; //clean the past block of the player
+        return myPosition
     }
     goLeft(){
         console.log("Girar hacia la izquierda")
         //let myPosition = this.myInitialPosition;
-        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-        let leftPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(1)")
-        leftPosition.innerHTML = `<div class="player-block"></div>`
-        myPosition.innerHTML = `<div class="block"></div>`
+        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
+        let leftPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(1)");
+        leftPosition.innerHTML = `<div class="player-block"></div>`;
+        myPosition.className = "block";
+        //myPosition.innerHTML = `<div class="block"></div>`
+        return myPosition
 
     }
     starsCollector(){
