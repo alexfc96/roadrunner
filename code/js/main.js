@@ -1,3 +1,5 @@
+let game;
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
     function createStartScreen(){ //the first display showing the title of the game
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         </div>          
         <div class="rows-blocks">
             <div class="block"></div>
-            <div class="block"></div>
+            <div class="player-block"></div> <!--Initial position of the player and we need to change the class to the siblings-->
             <div class="block"></div>
         </div>`
     }
@@ -56,6 +58,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const gameScreen = document.getElementById("game-screen");
     btnStartGameScreen.addEventListener('click',createGameScreen); //agregado pero comentado en el metodo setGameStartScreen() de game.js
     const gameOverScreen = document.getElementById("game-over-screen");
+
+    // Start the classes Game and the new player
+    game = new Game({
+        roadrunner : new Player()
+    });
+    
+    //game.start()
 
 })
 

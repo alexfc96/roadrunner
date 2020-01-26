@@ -50,6 +50,23 @@ color: red;
   border: 1px solid white;    
   overflow: hidden;  /*Recordad que oculta el contenido!!!*/
 }
+.player-block{
+  background-image: url(/media/superpower.png);
+  background-size: 80px;
+  background-repeat: no-repeat;
+
+  /*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  /*padding: 5%;*/
+  /*height: 6%;*/
+
+  width: 100%;
+  border: 1px solid white;    
+  overflow: hidden;  /*Recordad que oculta el contenido!!!*/
+}
 #game-over-screen{
   font-size: 24px;
   text-align: center;
