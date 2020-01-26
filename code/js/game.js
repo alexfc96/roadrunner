@@ -4,7 +4,7 @@ class Game{
         this.heightScreen = undefined
     }
     setGameStartScreen(){
-        Main.createStartScreen()
+        this.Main.createStartScreen()
     }
     drawBoard(){};
     drawPlayer(){};
@@ -13,4 +13,7 @@ class Game{
     //generateEmptyBlocks(){};
     gameOver(){};
     start(){};
-    }
+}
+
+//game1 = new Game()
+
