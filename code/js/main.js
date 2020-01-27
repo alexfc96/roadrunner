@@ -3,6 +3,8 @@ let game;
 document.addEventListener('DOMContentLoaded', (event) => {
 
     function createStartScreen(){ //the first display showing the title of the game
+        //gameScreen.style = "display: none";
+        //gameOverScreen.style = "display: none";
         console.log("createStartScreen")
         const startScreen = document.getElementById("start-screen"); //selecting the div that will contain the structure of the display
         startScreen.innerHTML = `                       

@@ -48,7 +48,7 @@ class Player{
         let checkPosition0 = row.children[0];
         let checkPosition1 = row.children[1];
 
-        let rightPosition = undefined
+        let rightPosition = undefined;
         if(myPosition == checkPosition1){ //chech if the player is in the middle block. In this case:
             rightPosition= row.children[2]; //the position where the player it will put (right side of the blocks)
             rightPosition.className = "player-block"; //assign the new class to the block where my player will be situated
@@ -63,15 +63,30 @@ class Player{
 
         return rightPosition //return the actual position of the player
     }
+    
     goLeft(myPosition){
         console.log("Girar hacia la izquierda")
-        //let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
-        let leftPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(1)");
-        leftPosition.className = "player-block";
-        myPosition.className = "block";
-        //myPosition.innerHTML = `<div class="block"></div>`
-        return leftPosition
 
+        let row = document.querySelector("#game-screen>.rows-blocks:last-child");
+        //let checkPosition = row.firstElementChild
+        let checkPosition1 = row.children[1];
+        let checkPosition2 = row.children[2];
+
+        let leftPosition = undefined;
+
+        if(myPosition == checkPosition1){ //chech if the player is in the middle block. In this case:
+            leftPosition= row.children[0]; //the position where the player it will put (right side of the blocks)
+            leftPosition.className = "player-block"; //assign the new class to the block where my player will be situated
+            myPosition.className = "block"; //clean the past block of the player
+        } else if(myPosition == checkPosition2){ //check if the position is the first (left) block.
+            leftPosition= row.children[1]; 
+            leftPosition.className = "player-block"; 
+            myPosition.className = "block"; 
+        } else{
+            leftPosition = myPosition; //in case that the player is in the right side(limit)= my actual position it will be the same position
+        }
+
+        return leftPosition
     }
     starsCollector(){
 

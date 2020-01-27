@@ -54,6 +54,7 @@ color: red;
   background-image: url(/media/superpower.png);
   background-size: 80px;
   background-repeat: no-repeat;
+  background-position: center center;
 
   /*
   display: flex;

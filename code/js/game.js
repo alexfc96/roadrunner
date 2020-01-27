@@ -42,7 +42,7 @@ class Game{
     generateObstacles(){};
     //generateEmptyBlocks(){};
     gameOver(){
-        this.Main.createGameOverScreen();
+        //this.Main.createGameOverScreen();
     };
     start(){
         this._assignControlsToKeys();
