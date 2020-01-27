@@ -43,10 +43,24 @@ class Player{
     */
     goRight(myPosition){
         console.log("Girar hacia la derecha")
-        //let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //select the actual position of the player
-        let rightPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(3)"); //the position where the player it will put
-        rightPosition.className = "player-block"; //assign the new class to the block where my player will be situated
-        myPosition.className = "block"; //clean the past block of the player
+        let row = document.querySelector("#game-screen>.rows-blocks:last-child");
+        //let checkPosition = row.firstElementChild
+        let checkPosition0 = row.children[0];
+        let checkPosition1 = row.children[1];
+
+        let rightPosition = undefined
+        if(myPosition == checkPosition1){ //chech if the player is in the middle block. In this case:
+            rightPosition= row.children[2]; //the position where the player it will put (right side of the blocks)
+            rightPosition.className = "player-block"; //assign the new class to the block where my player will be situated
+            myPosition.className = "block"; //clean the past block of the player
+        } else if(myPosition == checkPosition0){ //check if the position is the first (left) block.
+            rightPosition= row.children[1]; 
+            rightPosition.className = "player-block"; 
+            myPosition.className = "block"; 
+        } else{
+            rightPosition = myPosition; //in case that the player is in the right side(limit)= my actual position it will be the same position
+        }
+
         return rightPosition //return the actual position of the player
     }
     goLeft(myPosition){
