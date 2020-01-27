@@ -1,11 +1,11 @@
 class Player{
     constructor(){  // entiendo que mi player lo tendré que crear en otro archivo y pasarlo como parametro en el constructor
-        this.myPlayer = this.myPlayer,
-        this.width = this.width,
-        this.height = this.height, //i am not sure if i will need it
-        this.color = this.color
-        //this.myInitialPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(2)")
-        //this.collectedStars = undefined
+        //this.myPlayer = this.myPlayer,   //aunque lo descomente no afecta al funcionamiento
+        //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+        //this.collectedStars = undefined,
+        //this.width = this.width,
+        //this.height = this.height, //i am not sure if i will need it
+        //this.color = this.color,
     }
     /*
     move(){  //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
@@ -41,24 +41,22 @@ class Player{
         this.previousTail = this.body.pop();
     };
     */
-    goRight(){
+    goRight(myPosition){
         console.log("Girar hacia la derecha")
-        //let myPosition = this.myInitialPosition;
-        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //select the actual position of the player
+        //let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //select the actual position of the player
         let rightPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(3)"); //the position where the player it will put
-        rightPosition.innerHTML = `<div class="player-block"></div>`;
+        rightPosition.className = "player-block"; //assign the new class to the block where my player will be situated
         myPosition.className = "block"; //clean the past block of the player
-        return myPosition
+        return rightPosition //return the actual position of the player
     }
-    goLeft(){
+    goLeft(myPosition){
         console.log("Girar hacia la izquierda")
-        //let myPosition = this.myInitialPosition;
-        let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
+        //let myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
         let leftPosition= document.querySelector("#game-screen>.rows-blocks:last-child>.block:nth-child(1)");
-        leftPosition.innerHTML = `<div class="player-block"></div>`;
+        leftPosition.className = "player-block";
         myPosition.className = "block";
         //myPosition.innerHTML = `<div class="block"></div>`
-        return myPosition
+        return leftPosition
 
     }
     starsCollector(){

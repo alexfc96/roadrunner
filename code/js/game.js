@@ -1,9 +1,12 @@
 class Game{
-    constructor(options){
-        this.widthScreen = undefined,
-        this.heightScreen = undefined,
-        this.roadrunner = options.roadrunner  //creo las opciones en main creando el player
-        //this.myInitialPosition = myInitialPosition.roadrunner
+    constructor(myPlayer){ //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+        this.myPlayer = myPlayer.myPlayer  //creo las opciones en main creando el player
+        //this.myPosition = myPosition,
+        //this.myPosition = myPlayer.myPosition,
+        //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+        //this.widthScreen = undefined,
+        //this.heightScreen = undefined
+
         //this.btnStartGameScreen = document.getElementById("btn-start-game"); no se si esto debería de cargarse aquí
     }
     setGameStartScreen(){
@@ -16,17 +19,18 @@ class Game{
 
     
     _assignControlsToKeys() {
-        console.log("Asignando controles")
+        console.log("Asignando controles");
+        this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
         document.addEventListener('keydown', e => {
           switch (e.keyCode) {
             //case 38: // arrow up  //maybe the button up works for jump and also the space tab
               //this.snake.goUp();
               //break;
             case 37: // arrow left
-              this.roadrunner.goLeft();
+              this.myPosition =this.myPlayer.goLeft(this.myPosition);
               break;
             case 39: // arrow right
-              this.roadrunner.goRight();
+              this.myPosition = this.myPlayer.goRight(this.myPosition);
               break;
             //case 80: // p pause
               //this.snake.intervalId ? this.snake.stop() : this.snake.move();

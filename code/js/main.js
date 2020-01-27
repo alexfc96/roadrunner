@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Start the classes Game and the new player
     game = new Game({
-        roadrunner : new Player()
+        myPlayer : new Player()
     });
     
     //game.start()
