@@ -4,11 +4,15 @@
 */
 
 html,body{
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.7em;
   margin:0px;
   height:100%;
   }
 h1{
   text-align: center;
+  font-size: 2em;
+  margin: 0.27em 0;
 }
 #space-game{
   height: 70%;
@@ -16,16 +20,26 @@ h1{
   border-style: solid;
 }
 #start-screen{
-/*padding-top: 22%;*/
-height: 100%;
-text-align: center;
-background-color: pink;
+  /*padding-top: 22%;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 100px; 
+  height: 100%;
+  background-color: pink;
 }
 #start-screen h2{
-text-align: center;
-color: red;
+  font-size: 1.9em;
+  text-align: center;
+  color: black;
+  margin-bottom: 4%;
+  font-weight: bold ;
+
 }
 #start-screen #btn-start-game{
+  font-size: 1.4em;
+  padding: 3%;
   background-color: #7DBD9D;
 }
 
@@ -37,7 +51,7 @@ color: red;
 
 .rows-blocks{
   display: flex;
-  height: 19%;
+  height: 19.79%;
   background-color: #7DBD9D;
   border: 1px solid white;
 }
@@ -52,7 +66,7 @@ color: red;
 }
 .player-block{
   background-image: url(/media/superpower.png);
-  background-size: 80px;
+  background-size: 120px;
   background-repeat: no-repeat;
   background-position: center center;
 

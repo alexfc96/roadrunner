@@ -1,6 +1,7 @@
 class Game{
     constructor(myPlayer){ //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
         this.myPlayer = myPlayer.myPlayer  //creo las opciones en main creando el player
+        //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
         //this.myPosition = myPosition,
         //this.myPosition = myPlayer.myPosition,
         //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
@@ -44,9 +45,11 @@ class Game{
     gameOver(){
         //this.Main.createGameOverScreen();
     };
-    start(){
+    start(){  //how to automatize this function when the play starts?
         this._assignControlsToKeys();
     };
+    
+    //this.start(); why is not working?
 }
 
 //game1 = new Game()

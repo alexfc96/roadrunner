@@ -1,6 +1,6 @@
-let game;
+let game;  //no hace falta
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
 
     function createStartScreen(){ //the first display showing the title of the game
         //gameScreen.style = "display: none";
@@ -10,10 +10,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         startScreen.innerHTML = `                       
         <h2> Welcome to RoadRunneR</h2> 
         <input id="btn-start-game" type="button" value="START GAME"> 
+        <p>Use the arrow keys for move the player</p>
         <p>Game created by: Alex Fernández</p>`  //adding the code
 
     }
-    function createGameScreen(){
+    function createGameScreen(){  //the screen where the user plays the game
         console.log("createGameScreen")
         //startScreen.innerHTML = ``
         startScreen.style = "display: none";   //hiding the startScreen for put the gameScreen
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             <div class="block"></div>
         </div>`
     }
-    function createGameOverScreen(){
+    function createGameOverScreen(){  //the game over screen 
         console.log("createGameOverScreen");
         gameScreen.style = "display: none"; //hidding the gameScreen
         gameOverScreen.innerHTML = `             
@@ -70,9 +71,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 })
 
-//main = new Main()
-
-
-
-//createStartScreen(spaceGame);
-//createGameScreen(id);
