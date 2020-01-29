@@ -4,11 +4,7 @@ class Game {
       this.blocks = document.querySelectorAll(".block") //all the blocks in list
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
     //this.myPosition = myPosition,
-    //this.myPosition = myPlayer.myPosition,
     //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    //this.widthScreen = undefined,
-    //this.heightScreen = undefined
-
     //this.btnStartGameScreen = document.getElementById("btn-start-game"); no se si esto debería de cargarse aquí
   }
   setGameStartScreen() {
