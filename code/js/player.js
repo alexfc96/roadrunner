@@ -8,40 +8,42 @@ class Player {
       this.game = game //no estoy seguro si esto es necesario
     //this.collectedStars = undefined,
   }
-  /*
-  move(){  //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
-      let myPosition = this.myInitialPosition;
-      switch (this.myPosition) {
-        case "left":
-          this.myPlayer.unshift({
-            row: head.row,
-            column: (head.column - 1 + this.maxColumns) % this.maxColumns
-          });
-          break;
-        case "right":
-          this.body.unshift({
-            row: head.row,
-            column: (head.column + 1) % this.maxColumns
-          });
-          break;
-        /*
-        case "up":
-          this.body.unshift({
-            row: (head.row - 1 + this.maxRows) % this.maxRows,
-            column: head.column
-          });
-          break;
-        case "down":
-          this.body.unshift({
-            row: (head.row + 1) % this.maxRows,
-            column: head.column
-          });
-          break;
+
+  moveRoad() { //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
+
+
+
+
+    switch (this.myPosition) {
+      case "left":
+        this.myPlayer.unshift({
+          row: head.row,
+          column: (head.column - 1 + this.maxColumns) % this.maxColumns
+        });
+        break;
+      case "right":
+        this.body.unshift({
+          row: head.row,
+          column: (head.column + 1) % this.maxColumns
+        });
+        break;
+      case "up":
+        this.body.unshift({
+          row: (head.row - 1 + this.maxRows) % this.maxRows,
+          column: head.column
+        });
+        break;
+      case "down":
+        this.body.unshift({
+          row: (head.row + 1) % this.maxRows,
+          column: head.column
+        });
+        break;
         //acordarse de cerrar comentario  
-      }
-      this.previousTail = this.body.pop();
+    }
+    this.previousTail = this.body.pop();
   };
-  */
+
   goRight(position) {
     console.log("Girar hacia la derecha")
 

@@ -10,9 +10,20 @@ class Game {
   setGameStartScreen() {
     //this.btnStartGameScreen.addEventListener('click',createGameScreen); // y ejecutarse desde este Game o desde el main(funcionando)
   }
-  drawBoard() {
-    //this.Main.createGameScreen();
+  drawRoad() {
+    console.log("pintar drawboard")
+
+    this.rows = document.querySelectorAll(".rows-blocks");
+    for (let i = 0; i < this.rows.length; i++) {
+      if (this.rows[i].dataset.y % 2 == 0) {
+        this.rows[i].classList.add("pair");
+      } else {
+        this.rows[i].classList.remove("pair");
+      }
+    }
+
   };
+
   drawPlayer() {
     let x = this.player.position["x"]; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
@@ -27,26 +38,6 @@ class Game {
       //this.position.classList.add("block");
     };
     return this.position
-  };
-
-  checkRightMove() {
-    let row = document.querySelector("#game-screen>.rows-blocks:last-child");
-    //let checkPosition = row.firstElementChild
-    let checkPosition0 = row.children[0];
-    let checkPosition1 = row.children[1];
-
-    let rightPosition = undefined;
-    if (position == checkPosition1) { //chech if the player is in the middle block. In this case:
-      rightPosition = row.children[2]; //the position where the player it will put (right side of the blocks)
-      rightPosition.className = "player-block"; //assign the new class to the block where my player will be situated
-      position.className = "block"; //clean the past block of the player
-    } else if (position == checkPosition0) { //check if the position is the first (left) block.
-      rightPosition = row.children[1];
-      rightPosition.className = "player-block";
-      position.className = "block";
-    } else {
-      rightPosition = position; //in case that the player is in the right side(limit)= my actual position it will be the same position
-    }
   };
 
   _assignControlsToKeys() {
@@ -73,6 +64,11 @@ class Game {
       }
     });
   }
+
+  update() {
+
+  }
+
   generateStars() {};
   generateObstacles() {};
   //generateEmptyBlocks(){};
@@ -80,7 +76,8 @@ class Game {
     //this.Main.createGameOverScreen();
   };
   start() { //how to automatize this function when the play starts?
-    this.position = this.drawPlayer();
+    this.drawRoad(),
+      this.position = this.drawPlayer();
     this._assignControlsToKeys();
   };
 

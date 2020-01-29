@@ -3,68 +3,82 @@
 
 */
 
-html,body{
+html,
+body {
   font-family: 'Amatic SC', cursive;
   font-size: 1.7em;
-  margin:0px;
-  height:100%;
-  }
-h1{
+  margin: 0px;
+  height: 100%;
+}
+
+h1 {
   text-align: center;
   font-size: 2em;
   margin: 0.27em 0;
 }
-#space-game{
+
+#space-game {
   height: 70%;
-  margin: 3% 15% ; /*solid 1px*/
+  margin: 3% 15%;
+  /*solid 1px*/
   border-style: solid;
 }
-#start-screen{
+
+#start-screen {
   /*padding-top: 22%;*/
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  line-height: 100px; 
+  line-height: 100px;
   height: 100%;
   background-color: pink;
 }
-#start-screen h2{
+
+#start-screen h2 {
   font-size: 1.9em;
   text-align: center;
   color: black;
   margin-bottom: 4%;
-  font-weight: bold ;
+  font-weight: bold;
 
 }
-#start-screen #btn-start-game{
+
+#start-screen #btn-start-game {
   font-size: 1.4em;
   padding: 3%;
   background-color: #7DBD9D;
 }
 
-#game-screen{
+#game-screen {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.rows-blocks{
+.rows-blocks {
   display: flex;
   height: 19.79%;
   background-color: #7DBD9D;
   border: 1px solid white;
 }
-.block{
+
+.pair {
+  background-color: pink;
+}
+
+.block {
   display: flex;
   flex-direction: row;
   /*padding: 5%;*/
   /*height: 6%;*/
   width: 100%;
-  border: 1px solid white;    
-  overflow: hidden;  /*Recordad que oculta el contenido!!!*/
+  border: 1px solid white;
+  overflow: hidden;
+  /*Recordad que oculta el contenido!!!*/
 }
-.player-block{
+
+.player-block {
   background-image: url(/media/superpower.png);
   background-size: 120px;
   background-repeat: no-repeat;
@@ -79,16 +93,19 @@ h1{
   /*height: 6%;*/
 
   width: 100%;
-  border: 1px solid white;    
-  overflow: hidden;  /*Recordad que oculta el contenido!!!*/
+  border: 1px solid white;
+  overflow: hidden;
+  /*Recordad que oculta el contenido!!!*/
 }
-#game-over-screen{
+
+#game-over-screen {
   font-size: 24px;
   text-align: center;
   margin-top: 30%;
   height: 100%;
 }
+
 #game-over-screen #btn-replay-game {
-    font-size: 34px;
-    background-color: #7DBD9D;
+  font-size: 34px;
+  background-color: #7DBD9D;
 }
