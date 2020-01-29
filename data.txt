@@ -1,0 +1,7 @@
+para acceder alos data-row o data-x
+
+const block = document.querySelector(".block")
+block.dataset.x
+
+const blocks = document.querySelectorAll(".block")
+blocks.dataset.x
