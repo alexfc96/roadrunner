@@ -24,6 +24,22 @@ class Game {
 
   };
 
+  addNewRowToTheRoad() {
+    let y = this.player.position["y"];
+    let gameScreen = document.getElementById("game-screen");
+    gameScreen.innerHTML += `            
+    <div class="rows-blocks" data-y="${y}">
+        <div class="block" data-x="0"></div>
+        <div class="block" data-x="1"></div>
+        <div class="block" data-x="2"></div>
+    </div>`
+  }
+
+  removeLastChildOfRoad() {
+    let rowOfPlayer = document.querySelectorAll("#game-screen>.rows-blocks:last-child") //selecting always the last child
+    //rowOfPlayer.pop() //esto en la consola no se puede (es un nodeList)
+  }
+
   drawPlayer() {
     let x = this.player.position["x"]; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
@@ -66,6 +82,13 @@ class Game {
   }
 
   update() {
+    //this.rowPosition = document.querySelector("#game-screen>.rows-blocks:last-child");
+    //this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+    let x = this.player.position["x"];
+    let y = this.player.position["y"];
+    this.player.moveRoad(x, y);
+    this.addNewRowToTheRoad()
+    //this.removeLastChildOfRoad();
 
   }
 
@@ -77,8 +100,9 @@ class Game {
   };
   start() { //how to automatize this function when the play starts?
     this.drawRoad(),
-      this.position = this.drawPlayer();
+      this.drawPlayer();
     this._assignControlsToKeys();
+    this.update()
   };
 
   //this.start(); why is not working?

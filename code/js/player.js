@@ -9,39 +9,13 @@ class Player {
     //this.collectedStars = undefined,
   }
 
-  moveRoad() { //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
-
-
-
-
-    switch (this.myPosition) {
-      case "left":
-        this.myPlayer.unshift({
-          row: head.row,
-          column: (head.column - 1 + this.maxColumns) % this.maxColumns
-        });
-        break;
-      case "right":
-        this.body.unshift({
-          row: head.row,
-          column: (head.column + 1) % this.maxColumns
-        });
-        break;
-      case "up":
-        this.body.unshift({
-          row: (head.row - 1 + this.maxRows) % this.maxRows,
-          column: head.column
-        });
-        break;
-      case "down":
-        this.body.unshift({
-          row: (head.row + 1) % this.maxRows,
-          column: head.column
-        });
-        break;
-        //acordarse de cerrar comentario  
+  moveRoad(x, y) { //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
+    console.log("Entro en moveRoad")
+    y = y + 1
+    this.position = {
+      x: x,
+      y: y
     }
-    this.previousTail = this.body.pop();
   };
 
   goRight(position) {
@@ -51,14 +25,14 @@ class Player {
       //position = document.querySelector("#game-screen>.rows-blocks:last-child>.block").nextElementSibling;
       this.position = {
         x: 1,
-        y: 4
+        y: 0
       }
       //position.dataset.x = '1';
     } else if (position.dataset.x === '1') {
       //position = document.querySelector("#game-screen>.rows-blocks:last-child>.block").nextElementSibling;
       this.position = {
         x: 2,
-        y: 4
+        y: 0
       }
       //position.dataset.x = '2';
     }
@@ -72,14 +46,14 @@ class Player {
       //position = document.querySelector("#game-screen>.rows-blocks:last-child>.block").previousElementSibling;
       this.position = {
         x: 0,
-        y: 4
+        y: 0
       }
       //position.dataset.x = '0';
     } else if (position.dataset.x === '2') {
       //position = document.querySelector("#game-screen>.rows-blocks:last-child>.block").previousElementSibling;
       this.position = {
         x: 1,
-        y: 4
+        y: 0
       }
       //position.dataset.x = '1';
     }
