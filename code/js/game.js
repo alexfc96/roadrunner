@@ -1,7 +1,8 @@
 class Game {
-  constructor(player, road) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, star) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
+    this.star = star;
     this.interval = undefined;
     this.blocks = document.querySelectorAll(".block");
     this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block") //all the blocks in list
@@ -71,8 +72,14 @@ class Game {
     if (playerPosition.classList.contains("star-block")) {
       console.log("Estrella");
       this.player.collectedStars += 1;
-      //this.road.removeStars()
+      //this.removeStars()
     }
+  }
+
+  removeStars() {
+    let x = this.player.position.x;  //necesito saber donde está la estrella
+    let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
+    row[x].classList.remove("star-block");
   }
 
   _assignControlsToKeys() {
