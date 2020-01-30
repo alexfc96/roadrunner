@@ -1,6 +1,8 @@
 class Game {
-  constructor(player) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player, //creo las opciones en main creando el player
+      this.road = road,
+      this.interval = undefined,
       this.blocks = document.querySelectorAll(".block") //all the blocks in list
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
     //this.myPosition = myPosition,
@@ -25,26 +27,33 @@ class Game {
   };
 
   addNewRowToTheRoad() {
-    let y = this.player.position["y"];
-    let gameScreen = document.getElementById("game-screen");
-    gameScreen.innerHTML += `            
+    console.log("Añadiendo una nueva row al road")
+
+    let y = this.road.roadPosition["y"];
+    let gameScreen = document.getElementById("game-screen").innerHTML;
+    gameScreen = `            
     <div class="rows-blocks" data-y="${y}">
         <div class="block" data-x="0"></div>
         <div class="block" data-x="1"></div>
         <div class="block" data-x="2"></div>
-    </div>`
+    </div> ` + gameScreen;
+
+    document.getElementById("game-screen").innerHTML = gameScreen;
+
   }
 
   removeLastChildOfRoad() {
-    let rowOfPlayer = document.querySelectorAll("#game-screen>.rows-blocks:last-child") //selecting always the last child
-    //rowOfPlayer.pop() //esto en la consola no se puede (es un nodeList)
+    console.log("Eliminando ultima row(donde se encuentra el player)")
+    let gameScreenRows = document.getElementById("game-screen")
+    gameScreenRows.removeChild(gameScreenRows.lastChild)
+
   }
 
   drawPlayer() {
     let x = this.player.position["x"]; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
     row[x].classList.add("player-block");
-    return this.position
+    //return this.position
   };
 
   removePlayer() {
@@ -81,20 +90,27 @@ class Game {
     });
   }
 
-  update() {
+  _update() {
     //this.rowPosition = document.querySelector("#game-screen>.rows-blocks:last-child");
     //this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+    this.removeLastChildOfRoad();
+    this.road.move()
     let x = this.player.position["x"];
     let y = this.player.position["y"];
-    this.player.moveRoad(x, y);
-    this.addNewRowToTheRoad()
-    //this.removeLastChildOfRoad();
+    let xOfRoad = this.road.roadPosition["x"];
+    let yOfRoad = this.road.roadPosition["y"];
+    this.road.moveRoad(xOfRoad, yOfRoad);
+    this.removeLastChildOfRoad();
+    this.addNewRowToTheRoad();
+    this.drawRoad();
+    this.drawPlayer();
 
+    if (!!this.interval) {
+      //setInterval(window.requestAnimationFrame(this._update.bind(this), 1000));
+      this.interval = window.requestAnimationFrame(this._update.bind(this));
+    }
   }
 
-  generateStars() {};
-  generateObstacles() {};
-  //generateEmptyBlocks(){};
   gameOver() {
     //this.Main.createGameOverScreen();
   };
@@ -102,7 +118,8 @@ class Game {
     this.drawRoad(),
       this.drawPlayer();
     this._assignControlsToKeys();
-    this.update()
+    //this._update()
+    this.interval = window.requestAnimationFrame(this._update.bind(this));
   };
 
   //this.start(); why is not working?

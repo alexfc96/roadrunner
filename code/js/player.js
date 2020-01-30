@@ -9,15 +9,6 @@ class Player {
     //this.collectedStars = undefined,
   }
 
-  moveRoad(x, y) { //entiendo que esto hará el movimiento de los bloques pero, no el de mi player
-    console.log("Entro en moveRoad")
-    y = y + 1
-    this.position = {
-      x: x,
-      y: y
-    }
-  };
-
   goRight(position) {
     console.log("Girar hacia la derecha")
 
