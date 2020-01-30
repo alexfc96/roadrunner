@@ -20,7 +20,7 @@ class Road {
   };
 
   move() {
-    this.intervalId = setInterval(this.moveRoad.bind(this), 1000); //si pongo esto la y aumenta cada segundo y yo quiero que aumente al mismo ritmo que game.update() se llama
+    //this.intervalId = setInterval(this.moveRoad.bind(this), 1000); //si pongo esto la y aumenta cada segundo y yo quiero que aumente al mismo ritmo que game.update() se llama
   }
 
   generateStars() {};

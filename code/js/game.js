@@ -13,7 +13,7 @@ class Game {
     //this.btnStartGameScreen.addEventListener('click',createGameScreen); // y ejecutarse desde este Game o desde el main(funcionando)
   }
   drawRoad() {
-    console.log("pintar drawboard")
+    //console.log("pintar drawboard")
 
     this.rows = document.querySelectorAll(".rows-blocks");
     for (let i = 0; i < this.rows.length; i++) {
@@ -27,7 +27,7 @@ class Game {
   };
 
   addNewRowToTheRoad() {
-    console.log("Añadiendo una nueva row al road")
+    //console.log("Añadiendo una nueva row al road")
 
     let y = this.road.roadPosition["y"];
     let gameScreen = document.getElementById("game-screen").innerHTML;
@@ -43,13 +43,14 @@ class Game {
   }
 
   removeLastChildOfRoad() {
-    console.log("Eliminando ultima row(donde se encuentra el player)")
+    //console.log("Eliminando ultima row(donde se encuentra el player)")
     let gameScreenRows = document.getElementById("game-screen")
     gameScreenRows.removeChild(gameScreenRows.lastChild)
 
   }
 
   drawPlayer() {
+    //console.log("Pintamos al player")
     let x = this.player.position["x"]; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
     row[x].classList.add("player-block");
@@ -57,7 +58,7 @@ class Game {
   };
 
   removePlayer() {
-    console.log("Borrando player")
+    //console.log("Borrando player")
     if (this.position.classList.contains("player-block")) {
       this.position.classList.remove("player-block");
       //this.position.classList.add("block");
@@ -66,7 +67,7 @@ class Game {
   };
 
   _assignControlsToKeys() {
-    console.log("Asignando controles");
+    //console.log("Asignando controles");
     document.addEventListener('keydown', e => {
       this.position = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
       switch (e.keyCode) {
@@ -114,12 +115,21 @@ class Game {
   gameOver() {
     //this.Main.createGameOverScreen();
   };
+
   start() { //how to automatize this function when the play starts?
     this.drawRoad(),
       this.drawPlayer();
     this._assignControlsToKeys();
-    //this._update()
-    this.interval = window.requestAnimationFrame(this._update.bind(this));
+    this._update()
+    //this.interval = window.requestAnimationFrame(this._update.bind(this));
+
+    /* 
+    let framesPerSecond = 4;
+    setTimeout(function () {
+      window.requestAnimationFrame(this._update.bind(this));
+    }, 1000 / framesPerSecond);
+    */
+
   };
 
   //this.start(); why is not working?
