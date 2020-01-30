@@ -1,7 +1,8 @@
 class Game {
-  constructor(player, road) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, star) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
+    this.star = star;
     this.interval = undefined;
     this.blocks = document.querySelectorAll(".block");
     this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block") //all the blocks in list
@@ -71,8 +72,13 @@ class Game {
     if (playerPosition.classList.contains("star-block")) {
       console.log("Estrella");
       this.player.collectedStars += 1;
-      //this.road.removeStars()
+      this.removeStars()
     }
+  }
+
+  removeStars() {
+    let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+    playerPosition.classList.remove("star-block");
   }
 
   _assignControlsToKeys() {
@@ -92,9 +98,9 @@ class Game {
           this.player.goRight();
           this.drawPlayer();
           break;
-        //case 80: // p pause
-        //this.snake.intervalId ? this.snake.stop() : this.snake.move();
-        //break;
+          //case 80: // p pause
+          //this.snake.intervalId ? this.snake.stop() : this.snake.move();
+          //break;
       }
     });
   }

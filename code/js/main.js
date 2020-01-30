@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
     const gameOverScreen = document.getElementById("game-over-screen");
 
     // Start the classes Game and the new player
-    game = new Game(new Player(1, 0), new Road(0, 4));
+    game = new Game(new Player(1, 0), new Road(0, 4), new Star());
 
     //game.start()
 
