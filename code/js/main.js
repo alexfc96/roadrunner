@@ -1,6 +1,6 @@
 let game; //hace falta porque si no no es una variable global
-
-document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
+let main;
+main = document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
 
     function createStartScreen() { //the first display showing the title of the game
         //gameScreen.style = "display: none";
@@ -47,25 +47,39 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
         </div>`
     }
 
+    function createWinScreen(stars) {
+        console.log("creating winScreen");
+        gameScreen.style = "display: none";
+        winScreen.innerHTML = `             
+        <h2>Well played!</h2>
+        <p>You have taken ${stars} stars</p></hr>
+        Play again?<br>
+        <input id="btn-restart-game" type="button" value="RESTART GAME"> 
+        `
+    }
+
     function createGameOverScreen() { //the game over screen 
         console.log("createGameOverScreen");
         gameScreen.style = "display: none"; //hidding the gameScreen
         gameOverScreen.innerHTML = `             
-        <p>Bien jugado.</p>
+        <p>Fracaaaaso</p>
         Play again?<br>
-        <button id="btn-replay-game" value="RESTART GAME">RESTART GAME</button>`
+        <button id="btnStartGameScreen" value="RESTART GAME">RESTART GAME</button>`
     }
 
     //Esto creo que debería de ir en game.js(las llamadas a las funciones)
 
     const startScreen = document.getElementById("start-screen");
-    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
     const gameScreen = document.getElementById("game-screen");
-    btnStartGameScreen.addEventListener('click', createGameScreen); //agregado pero comentado en el metodo setGameStartScreen() de game.js
+    const winScreen = document.getElementById("win-screen");
+    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
+    const btnRestartGame = document.getElementById("btn-restart-game");
+    btnStartGameScreen.addEventListener('click', createGameScreen);
+    //btnRestartGame.addEventListener('click', createGameScreen); //agregado pero comentado en el metodo setGameStartScreen() de game.js
     const gameOverScreen = document.getElementById("game-over-screen");
 
     // Start the classes Game and the new player
-    game = new Game(new Player(1, 0), new Road(0, 4), new Star());
+    game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen);
 
     //game.start()
 

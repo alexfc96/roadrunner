@@ -1,11 +1,12 @@
 class Game {
-  constructor(player, road, star) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, star, win) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
     this.star = star;
     this.interval = undefined;
     this.blocks = document.querySelectorAll(".block");
-    this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block") //all the blocks in list
+    this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //all the blocks in list
+    this.win = win
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
     //this.myPosition = myPosition,
     //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
@@ -82,7 +83,15 @@ class Game {
     if (playerPosition.classList.contains("star-block")) {
       console.log("Estrella");
       this.player.collectedStars += 1;
-      this.removeStars()
+      this.removeStars();
+    }
+  }
+
+  checkIfPlayerWin() {
+    if (this.player.collectedStars === 5) {
+      console.log("Victorioso");
+      this.win(this.player.collectedStars)
+      //main.createWinScreen();
     }
   }
 
@@ -129,6 +138,7 @@ class Game {
     this.drawRoad();
     this.drawPlayer();
     this.playerCatchAStar();
+    this.checkIfPlayerWin();
     this.generateStars();
   }
 
