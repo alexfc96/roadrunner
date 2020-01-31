@@ -67,6 +67,16 @@ class Game {
     row[x].classList.remove("player-block");
   };
 
+  generateStars() {
+    //let firstRow = document.querySelector("#game-screen>.rows-blocks:first-child>.block");
+    let firstRow = document.querySelector(".rows-blocks:first-child");
+    let num = Math.floor(Math.random() * 5);
+    if (num < 3) {
+      firstRow.children[num].classList.add("star-block");
+    }
+
+  };
+
   playerCatchAStar() {
     let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
     if (playerPosition.classList.contains("star-block")) {
@@ -118,7 +128,8 @@ class Game {
     this.addNewRowToTheRoad();
     this.drawRoad();
     this.drawPlayer();
-    this.playerCatchAStar()
+    this.playerCatchAStar();
+    this.generateStars();
   }
 
   gameOver() {
@@ -128,7 +139,7 @@ class Game {
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
     if (!this.interval) {
-      this.interval = setInterval(this._update.bind(this), 1000)
+      this.interval = setInterval(this._update.bind(this), 600)
     }
   };
 

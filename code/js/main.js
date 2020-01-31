@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
         gameScreen.innerHTML = `            
         <div class="rows-blocks" data-y="4">
             <div class="block" data-x="0"></div>
-            <div class="block star-block" data-x="1"></div>
+            <div class="block" data-x="1"></div>
             <div class="block obstacle-block" data-x="2"></div>
         </div>
         <div class="rows-blocks" data-y="3">
