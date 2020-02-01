@@ -79,7 +79,7 @@ h1 {
 }
 
 .player-block {
-  background-image: url(/media/superpower.png);
+  background-image: url(media/superpower.png);
   background-size: 120px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -99,7 +99,7 @@ h1 {
 }
 
 .star-block {
-  background-image: url(/media/star.png);
+  background-image: url(media/star.png);
   background-size: 120px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -109,7 +109,7 @@ h1 {
 }
 
 .obstacle-block {
-  background-image: url(/media/asteroid.png);
+  background-image: url(media/asteroid.png);
   background-size: 120px;
   background-repeat: no-repeat;
   background-position: center center;

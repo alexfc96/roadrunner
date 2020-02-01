@@ -94,7 +94,11 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
 
 
     // Start the classes Game and the new player
+<<<<<<< HEAD:js/main.js
     game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen);
+=======
+    game = new Game(new Player(1, 0), new Road(0, 4), new Star());
+>>>>>>> fe310453134000cc74a88e0583813a0028b3331d:code/js/main.js
 
     //game.start()
 
