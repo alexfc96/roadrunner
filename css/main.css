@@ -6,14 +6,14 @@
 html,
 body {
   font-family: 'Amatic SC', cursive;
-  font-size: 1.8em;
+  font-size: 2em;
   margin: 0px;
   height: 100%;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.3em;
+  font-size: 2.4em;
   margin: 0.27em 0;
 }
 
@@ -36,7 +36,7 @@ h1 {
 }
 
 #start-screen h2 {
-  font-size: 2.1em;
+  font-size: 2.3em;
   text-align: center;
   color: black;
   margin-bottom: 4%;
@@ -45,7 +45,7 @@ h1 {
 }
 
 #start-screen #btn-start-game {
-  font-size: 1.6em;
+  font-size: 1.8em;
   padding: 3%;
   background-color: #7DBD9D;
 }
@@ -137,21 +137,38 @@ h1 {
 
 }
 
-#win-screen #btn-replay-game {
-  font-size: 1.6em;
-  padding: 3%;
+#win-screen #btn-resume-game {
+  font-size: 1.7em;
+  padding: 1.2%;
+  background-color: #7DBD9D;
+}
+
+#win-screen #btn-restart-game {
+  font-size: 1.7em;
+  padding: 1.2%;
   background-color: #7DBD9D;
 }
 
 #game-over-screen {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 100px;
   height: 100%;
+  background-color: pink;
 }
 
-#game-over-screen #btn-replay-game {
-  font-size: 1.6em;
-  padding: 3%;
+#game-over-screen h2 {
+  font-size: 2.3em;
+  text-align: center;
+  color: black;
+  margin-bottom: 4%;
+  font-weight: bold;
+}
+
+#game-over-screen #btn-restart-game {
+  font-size: 1.7em;
+  padding: 1.6%;
   background-color: #7DBD9D;
 }

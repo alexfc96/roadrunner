@@ -1,14 +1,15 @@
 class Game {
-  constructor(player, road, star, win) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, star, win, lose) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
     this.star = star;
     this.interval = undefined;
     this.blocks = document.querySelectorAll(".block");
     this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //all the blocks in list
-    this.win = win
+    this.win = win;
+    this.lose = lose;
+    this.isPaused = true;
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
-    //this.myPosition = myPosition,
     //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
     //this.btnStartGameScreen = document.getElementById("btn-start-game"); no se si esto debería de cargarse aquí
   }
@@ -75,7 +76,6 @@ class Game {
     if (num < 3) {
       firstRow.children[num].classList.add("star-block");
     }
-
   };
 
   playerCatchAStar() {
@@ -100,6 +100,23 @@ class Game {
     playerPosition.classList.remove("star-block");
   }
 
+  generateObstacles() {
+    let firstRow = document.querySelector(".rows-blocks:first-child");
+    let num = Math.floor(Math.random() * 5);
+    if (num < 3) {
+      firstRow.children[num].classList.add("obstacle-block");
+    }
+  };
+
+  checkIfPlayerCollidesObstacle() {
+    let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+    if (playerPosition.classList.contains("obstacle-block")) {
+      console.log("Obstaculo");
+      this.isPaused = false;  //tenemos que vinvuñar el metodo stop()
+      this.lose();  //crea el código html de la pantalla(es una función del main.js)
+    }
+  }
+
   _assignControlsToKeys() {
     //console.log("Asignando controles");
     document.addEventListener('keydown', e => {
@@ -117,9 +134,9 @@ class Game {
           this.player.goRight();
           this.drawPlayer();
           break;
-          //case 80: // p pause
-          //this.snake.intervalId ? this.snake.stop() : this.snake.move();
-          //break;
+        //case 80: // p pause
+        //this.snake.intervalId ? this.snake.stop() : this.snake.move();
+        //break;
       }
     });
   }
@@ -138,8 +155,10 @@ class Game {
     this.drawRoad();
     this.drawPlayer();
     this.playerCatchAStar();
+    this.checkIfPlayerCollidesObstacle();
     this.checkIfPlayerWin();
     this.generateStars();
+    this.generateObstacles();
   }
 
   gameOver() {
@@ -148,10 +167,19 @@ class Game {
 
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
-    if (!this.interval) {
-      this.interval = setInterval(this._update.bind(this), 600)
+    const interval = setInterval(this._update.bind(this), 600); //my time refresh
+    if (!this.interval) { //undefined
+      interval
+      if (!this.isPaused) {
+        clearInterval(interval);
+      }
     }
   };
+
+  stop() {
+    this.interval = true;
+    clearInterval(interval);
+  }
 
   //this.start(); why is not working?
 }
