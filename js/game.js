@@ -1,9 +1,5 @@
 class Game {
-<<<<<<< HEAD:js/game.js
   constructor(player, road, star, win, lose) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
-=======
-  constructor(player, road, star) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
->>>>>>> fe310453134000cc74a88e0583813a0028b3331d:code/js/game.js
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
     this.star = star;
@@ -87,7 +83,6 @@ class Game {
     if (playerPosition.classList.contains("star-block")) {
       console.log("Estrella");
       this.player.collectedStars += 1;
-<<<<<<< HEAD:js/game.js
       this.removeStars();
     }
   }
@@ -119,9 +114,6 @@ class Game {
       console.log("Obstaculo");
       this.isPaused = false;  //tenemos que vinvuñar el metodo stop()
       this.lose();  //crea el código html de la pantalla(es una función del main.js)
-=======
-      //this.removeStars()
->>>>>>> fe310453134000cc74a88e0583813a0028b3331d:code/js/game.js
     }
   }
 
