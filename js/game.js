@@ -62,11 +62,38 @@ class Game {
     row[x].classList.add("player-block");
   };
 
-  removePlayer() {
+  drawPlayerJumping() {
+    let x = this.player.position.x; //para sacar el contenido de la x
+    let y = this.player.position.y; //para sacar el contenido de la y
+
+    // let row = document.querySelectorAll('.rows-blocks:nth-child(${y})');
+    let row = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(${y})>.block");
+    row[x].classList.add("player-block");
+
+
+    // let rows = document.querySelectorAll(".rows-blocks");
+    // rows[y].dataset.y.classList.add("player-block");
+
+  };
+
+  removePlayer() {  //acordarse de revisar esto una vez consiga que el player salta
     //console.log("Borrando player")
     let x = this.player.position.x; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
-    row[x].classList.remove("player-block");
+    row[0].classList.remove("player-block");
+    row[1].classList.remove("player-block");
+    row[2].classList.remove("player-block");
+
+    // let row4 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(4)>.block");
+    // row4[0].classList.remove("player-block");
+    // row4[1].classList.remove("player-block");
+    // row4[2].classList.remove("player-block");
+
+    // let y = this.player.position.y; //para sacar el contenido de la y
+    // let row3 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
+    // row3[0].classList.remove("player-block");
+    // row3[1].classList.remove("player-block");
+    // row3[2].classList.remove("player-block");
   };
 
   generateStars() {
@@ -117,40 +144,10 @@ class Game {
     }
   }
 
-  removeStars() {
-    let x = this.player.position.x;  //necesito saber donde está la estrella
-    let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
-    row[x].classList.remove("star-block");
-  }
-
-  _assignControlsToKeys() {
-    //console.log("Asignando controles");
-    document.addEventListener('keydown', e => {
-      switch (e.keyCode) {
-        //case 38: // arrow up  //maybe the button up works for jump and also the space tab
-        //this.snake.goUp();
-        //break;
-        case 37: // arrow left
-          this.removePlayer();
-          this.player.goLeft();
-          this.drawPlayer();
-          break;
-        case 39: // arrow right
-          this.removePlayer();
-          this.player.goRight();
-          this.drawPlayer();
-          break;
-        //case 80: // p pause
-        //this.snake.intervalId ? this.snake.stop() : this.snake.move();
-        //break;
-      }
-    });
-  }
-
   _update() {
     //this.rowPosition = document.querySelector("#game-screen>.rows-blocks:last-child");
     //this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    this.removeLastChildOfRoad();
+    this.removeLastChildOfRoad();  // this first time remove the first road
     let x = this.player.position["x"];
     let y = this.player.position["y"];
     let xOfRoad = this.road.roadPosition["x"];
@@ -171,9 +168,36 @@ class Game {
     //this.Main.createGameOverScreen();
   };
 
+  _assignControlsToKeys() {
+    //console.log("Asignando controles");
+    document.addEventListener('keydown', e => {
+      switch (e.keyCode) {
+        // case 38: // arrow up  //maybe the button up works for jump and also the space tab
+        //   this.removePlayer();
+        //   let y = this.road.roadPosition.y - 4;
+        //   this.player.jump(y);
+        //   this.drawPlayerJumping();
+        //break;
+        case 37: // arrow left
+          this.removePlayer();
+          this.player.goLeft();
+          this.drawPlayer();
+          break;
+        case 39: // arrow right
+          this.removePlayer();
+          this.player.goRight();
+          this.drawPlayer();
+          break;
+        //case 80: // p pause
+        //this.snake.intervalId ? this.snake.stop() : this.snake.move();
+        //break;
+      }
+    });
+  }
+
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
-    const interval = setInterval(this._update.bind(this), 600); //my time refresh
+    const interval = setInterval(this._update.bind(this), 550); //my time refresh
     if (!this.interval) { //undefined
       interval
       if (!this.isPaused) {

@@ -21,8 +21,13 @@ class Player {
     if (this.position.x > 0) {
       return this.position.x -= 1
     }
-
   }
+
+  jump(roadPosition) {
+    this.position.y = roadPosition + 2
+    return this.position.y
+  }
+
   starsCollector() {
 
   };

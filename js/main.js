@@ -3,7 +3,7 @@ let main;
 main = document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
 
     function createStartScreen() { //the first display showing the title of the game
-        startScreen.style = "display: block";
+        startScreen.style = "display";
         winScreen.style = "display: none";
         gameOverScreen.style = "display: none";
         gameScreen.style = "display: none"; //hiding the startScreen for put the gameScreen
@@ -19,7 +19,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
 
     function createGameScreen() { //the screen where the user plays the game
         console.log("createGameScreen")
-        gameScreen.style = "display: block";
+        gameScreen.style = "display";
         winScreen.style = "display: none";
         gameOverScreen.style = "display: none";
         startScreen.style = "display: none"; //hiding the startScreen for put the gameScreen
@@ -35,7 +35,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
             <div class="block" data-x="2"></div>
         </div>
         <div class="rows-blocks" data-y="2">
-            <div class="block data-x="0"></div>
+            <div class="block" data-x="0"></div>
             <div class="block" data-x="1"></div>
             <div class="block" data-x="2"></div>
         </div>
@@ -65,6 +65,10 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <p>You want to return to the main page?</p>
         <input id="btn-restart-game" type="button" value="RESTART GAME">        
         `
+        const btnResumeGame = document.getElementById("btn-resume-game");
+        btnResumeGame.addEventListener('click', createGameScreen);
+        const btnRestartGame = document.getElementById("btn-restart-game");
+        btnRestartGame.addEventListener('click', createStartScreen);
     }
 
     function createGameOverScreen() { //the game over screen 
@@ -77,25 +81,21 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <h2>Fracaaaaso!</h2>
         <p>Play again?</p><br>
         <input id="btn-restart-game" type="button" value="RESTART GAME">` //he probado también con onmousedown="createGameScreen" y dice que no existe la func
+        const btnRestartGame = document.getElementById("btn-restart-game");
+        btnRestartGame.addEventListener('click', createStartScreen);
     }
-
-    //Esto creo que debería de ir en game.js(las llamadas a las funciones)
-
-    const startScreen = document.getElementById("start-screen");
-    const gameScreen = document.getElementById("game-screen");
-    const winScreen = document.getElementById("win-screen");
-    const gameOverScreen = document.getElementById("game-over-screen");
-    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
-    const btnResumeGame = document.getElementById("btn-resume-game");
-    const btnRestartGame = document.getElementById("btn-restart-game");
-    btnStartGameScreen.addEventListener('click', createGameScreen);
-    //btnResumeGame.addEventListener('click', createGameScreen);
-    //btnRestartGame.addEventListener('click', createGameScreen); //agregado pero comentado en el metodo setGameStartScreen() de game.js
-
 
     // Start the classes Game and the new player
     game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen);
 
     //game.start()
+    const startScreen = document.getElementById("start-screen");
+    const gameScreen = document.getElementById("game-screen");
+    const winScreen = document.getElementById("win-screen");
+    const gameOverScreen = document.getElementById("game-over-screen");
+    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
+    btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
+
+    //btnStartGameScreen.addEventListener('click', game.start);  //debería de poder ejecutar game.start()
 
 })
