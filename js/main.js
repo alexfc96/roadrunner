@@ -14,7 +14,8 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <input id="btn-start-game" type="button" value="START GAME"> 
         <p>Use the arrow keys for move the player</p>
         <p>Game created by: Alex Fernández</p>` //adding the code
-
+        const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
+        btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
     }
 
     function createGameScreen() { //the screen where the user plays the game
@@ -82,7 +83,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         gameScreen.style = "display: none"; //hidding the gameScreen
         winScreen.style = "display: none";
         gameOverScreen.innerHTML = `             
-        <h2>Fracaaaaso!</h2>
+        <h2>GAME OVER!</h2>
         <p>You have taken ${stars} stars</p></hr>
         <p>Play again?</p><br>
         <input id="btn-restart-game" type="button" value="RESTART GAME">` //he probado también con onmousedown="createGameScreen" y dice que no existe la func

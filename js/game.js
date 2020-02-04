@@ -70,12 +70,8 @@ class Game {
     let y = this.player.position.y; //para sacar el contenido de la y
 
     // let row = document.querySelectorAll('.rows-blocks:nth-child(${y})');
-    let row = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(${y})>.block");
+    let row = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
     row[x].classList.add("player-block");
-
-
-    // let rows = document.querySelectorAll(".rows-blocks");
-    // rows[y].dataset.y.classList.add("player-block");
 
   };
 
@@ -87,16 +83,16 @@ class Game {
     row[1].classList.remove("player-block");
     row[2].classList.remove("player-block");
 
-    // let row4 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(4)>.block");
-    // row4[0].classList.remove("player-block");
-    // row4[1].classList.remove("player-block");
-    // row4[2].classList.remove("player-block");
+    let row4 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(4)>.block");
+    row4[0].classList.remove("player-block");
+    row4[1].classList.remove("player-block");
+    row4[2].classList.remove("player-block");
 
-    // let y = this.player.position.y; //para sacar el contenido de la y
-    // let row3 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
-    // row3[0].classList.remove("player-block");
-    // row3[1].classList.remove("player-block");
-    // row3[2].classList.remove("player-block");
+    let y = this.player.position.y; //para sacar el contenido de la y
+    let row3 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
+    row3[0].classList.remove("player-block");
+    row3[1].classList.remove("player-block");
+    row3[2].classList.remove("player-block");
   };
 
   generateStars() {
@@ -113,6 +109,7 @@ class Game {
     if (playerPosition.classList.contains("star-block")) {
       console.log("Estrella");
       this.player.collectedStars += 1;
+      this.checkIfPlayerWin()
       this.removeStars();
     }
   }
@@ -120,7 +117,8 @@ class Game {
   checkIfPlayerWin() {
     if (this.player.collectedStars == 5) {
       console.log("Victorioso");
-      this.win(this.player.collectedStars)
+      this.win(this.player.collectedStars);
+
     }
   }
 
@@ -143,12 +141,14 @@ class Game {
       console.log("Obstaculo");
       this.isPaused = false;  //tenemos que vinvuñar el metodo stop()
       this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+      this.stop()
     }
   }
 
   _update() {
     //this.rowPosition = document.querySelector("#game-screen>.rows-blocks:last-child");
     //this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+
     this.removeLastChildOfRoad();  // this first time remove the first road
     let x = this.player.position["x"];
     let y = this.player.position["y"];
@@ -161,7 +161,6 @@ class Game {
     this.drawPlayer();
     this.playerCatchAStar();
     this.checkIfPlayerCollidesObstacle();
-    this.checkIfPlayerWin();
     this.generateStars();
     this.generateObstacles();
   }
@@ -176,10 +175,10 @@ class Game {
       switch (e.keyCode) {
         // case 38: // arrow up  //maybe the button up works for jump and also the space tab
         //   this.removePlayer();
-        //   let y = this.road.roadPosition.y - 4;
-        //   this.player.jump(y);
+        //   //let y = this.road.roadPosition.y - 4;
+        //   this.player.jump();
         //   this.drawPlayerJumping();
-        //break;
+        //   break;
         case 37: // arrow left
           this.removePlayer();
           this.player.goLeft();
@@ -200,18 +199,22 @@ class Game {
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
     this.music()
-    const interval = setInterval(this._update.bind(this), 550); //my time refresh
-    if (!this.interval) { //undefined
-      interval
-      if (!this.isPaused) {
-        clearInterval(interval);
-      }
-    }
+    // const interval = setInterval(this._update.bind(this), 550); //my time refresh
+    // if (!this.interval) { //undefined
+    //   interval
+    // } else {
+    //   clearInterval(interval);
+    // }
+
+    this.interval = setInterval(this._update.bind(this), 550);
   };
 
   stop() {
-    this.interval = true;
-    clearInterval(interval);
+    if (this.interval) {
+      console.log("Fin")
+      clearInterval(this.interval);
+      this.interval = undefined;
+    }
   }
 
   //this.start(); why is not working?

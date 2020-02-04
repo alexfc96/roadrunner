@@ -8,6 +8,7 @@ body {
   font-family: 'Amatic SC', cursive;
   font-size: 2em;
   margin: 0px;
+  width: 100%;
   height: 100%;
 }
 
@@ -19,7 +20,9 @@ h1 {
 
 #space-game {
   height: 70%;
-  margin: 3% 15%;
+  margin: auto;
+  width: 50%;
+  /*margin: 3% 15%;
   /*solid 1px*/
   border-style: solid;
 }
@@ -170,6 +173,10 @@ h1 {
   font-size: 1.7em;
   padding: 1.6%;
   background-color: #7DBD9D;
+}
+#lives{
+  display: flex;
+  flex-direction: column;
 }
 
 #music{

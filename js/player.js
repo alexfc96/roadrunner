@@ -24,8 +24,7 @@ class Player {
   }
 
   jump(roadPosition) {
-    this.position.y = roadPosition + 2
-    return this.position.y
+    return this.position.y + 2
   }
 
   starsCollector() {
