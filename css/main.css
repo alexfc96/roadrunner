@@ -171,3 +171,7 @@ h1 {
   padding: 1.6%;
   background-color: #7DBD9D;
 }
+
+#music{
+  display: none;
+}

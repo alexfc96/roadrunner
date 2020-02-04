@@ -84,9 +84,13 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         const btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
+    function startMusic() {
+        console.log("Cargando musica");
+        music.play()
+    }
 
     // Start the classes Game and the new player
-    game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen);
+    game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen, startMusic);
 
     //game.start()
     const startScreen = document.getElementById("start-screen");
@@ -95,6 +99,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     const gameOverScreen = document.getElementById("game-over-screen");
     const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
     btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
+    const music = document.getElementById("music")
 
     //btnStartGameScreen.addEventListener('click', game.start);  //debería de poder ejecutar game.start()
 

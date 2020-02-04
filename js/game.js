@@ -1,5 +1,5 @@
 class Game {
-  constructor(player, road, star, win, lose) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, star, win, lose, music) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //creo las opciones en main creando el player
     this.road = road;
     this.star = star;
@@ -9,6 +9,7 @@ class Game {
     this.win = win;
     this.lose = lose;
     this.isPaused = true;
+    this.music = music;
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
     //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
     //this.btnStartGameScreen = document.getElementById("btn-start-game"); no se si esto debería de cargarse aquí
@@ -199,6 +200,7 @@ class Game {
 
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
+    this.music()
     const interval = setInterval(this._update.bind(this), 550); //my time refresh
     if (!this.interval) { //undefined
       interval
