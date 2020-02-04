@@ -66,12 +66,16 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <input id="btn-restart-game" type="button" value="RESTART GAME">        
         `
         const btnResumeGame = document.getElementById("btn-resume-game");
-        btnResumeGame.addEventListener('click', createGameScreen);
+        btnResumeGame.addEventListener('click', function () {
+            winScreen.style = "display: none";
+            gameScreen.style = "display";
+        }); //esto debría habilitar display gameScreen y no volver a crearla
+        //btnResumeGame.addEventListener('click', gameScreen.style = "display");
         const btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
 
-    function createGameOverScreen() { //the game over screen 
+    function createGameOverScreen(stars) { //the game over screen 
         console.log("createGameOverScreen");
         gameOverScreen.style = "display";
         startScreen.style = "display: none";
@@ -79,6 +83,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         winScreen.style = "display: none";
         gameOverScreen.innerHTML = `             
         <h2>Fracaaaaso!</h2>
+        <p>You have taken ${stars} stars</p></hr>
         <p>Play again?</p><br>
         <input id="btn-restart-game" type="button" value="RESTART GAME">` //he probado también con onmousedown="createGameScreen" y dice que no existe la func
         const btnRestartGame = document.getElementById("btn-restart-game");

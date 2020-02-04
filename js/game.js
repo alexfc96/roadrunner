@@ -118,10 +118,9 @@ class Game {
   }
 
   checkIfPlayerWin() {
-    if (this.player.collectedStars === 5) {
+    if (this.player.collectedStars == 5) {
       console.log("Victorioso");
       this.win(this.player.collectedStars)
-      //main.createWinScreen();
     }
   }
 
@@ -143,7 +142,7 @@ class Game {
     if (playerPosition.classList.contains("obstacle-block")) {
       console.log("Obstaculo");
       this.isPaused = false;  //tenemos que vinvuñar el metodo stop()
-      this.lose();  //crea el código html de la pantalla(es una función del main.js)
+      this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
     }
   }
 
