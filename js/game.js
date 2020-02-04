@@ -60,6 +60,8 @@ class Game {
     let x = this.player.position.x; //para sacar el contenido de la x
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
     row[x].classList.add("player-block");
+    this.playerCatchAStar()  //with this the player can catch stars horizontally
+    this.checkIfPlayerCollidesObstacle() //check if the player collides horizontally
   };
 
   drawPlayerJumping() {
