@@ -6,7 +6,8 @@ class Player {
       y: y
     };
     this.game = game; //no estoy seguro si esto es necesario
-    this.collectedStars = 0
+    this.collectedStars = 0;
+    this.alive = true;
   }
 
   goRight() {

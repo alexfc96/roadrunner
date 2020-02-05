@@ -72,7 +72,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
             gameScreen.style = "display";
         }); //esto debría habilitar display gameScreen y no volver a crearla
         //btnResumeGame.addEventListener('click', gameScreen.style = "display");
-        const btnRestartGame = document.getElementById("btn-restart-game");
+        let btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
 
@@ -86,8 +86,8 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <h2>GAME OVER!</h2>
         <p>You have taken ${stars} stars</p></hr>
         <p>Play again?</p><br>
-        <input id="btn-restart-game" type="button" value="RESTART GAME">` //he probado también con onmousedown="createGameScreen" y dice que no existe la func
-        const btnRestartGame = document.getElementById("btn-restart-game");
+        <input id="btn-restart-game-screen" type="button" value="RESTART GAME">`
+        let btnRestartGame = document.getElementById("btn-restart-game-screen");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
     function startMusic() {
@@ -103,7 +103,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     const gameScreen = document.getElementById("game-screen");
     const winScreen = document.getElementById("win-screen");
     const gameOverScreen = document.getElementById("game-over-screen");
-    const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
+    const btnStartGameScreen = document.getElementById("btn-start-game");
     btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
     const music = document.getElementById("music")
 

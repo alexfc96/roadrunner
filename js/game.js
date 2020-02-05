@@ -11,12 +11,6 @@ class Game {
     this.isPaused = true;
     this.music = music;
     //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
-    //this.myPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    //this.btnStartGameScreen = document.getElementById("btn-start-game"); no se si esto debería de cargarse aquí
-  }
-
-  setGameStartScreen() {
-    //this.btnStartGameScreen.addEventListener('click',createGameScreen); // y ejecutarse desde este Game o desde el main(funcionando)
   }
 
   drawRoad() {
@@ -118,7 +112,6 @@ class Game {
     if (this.player.collectedStars == 5) {
       console.log("Victorioso");
       this.win(this.player.collectedStars);
-
     }
   }
 
@@ -138,20 +131,17 @@ class Game {
   checkIfPlayerCollidesObstacle() {
     let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
     if (playerPosition.classList.contains("obstacle-block")) {
-      console.log("Obstaculo");
-      this.isPaused = false;  //tenemos que vinvuñar el metodo stop()
-      this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
-      this.stop()
+      if (this.player.alive) {
+        console.log("Obstaculo");
+        this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+        this.stop();
+        this.player.alive = false;
+      }
     }
   }
 
   _update() {
-    //this.rowPosition = document.querySelector("#game-screen>.rows-blocks:last-child");
-    //this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-
     this.removeLastChildOfRoad();  // this first time remove the first road
-    let x = this.player.position["x"];
-    let y = this.player.position["y"];
     let xOfRoad = this.road.roadPosition["x"];
     let yOfRoad = this.road.roadPosition["y"];
     this.road.moveRoad(xOfRoad, yOfRoad);
@@ -160,14 +150,10 @@ class Game {
     this.drawRoad();
     this.drawPlayer();
     this.playerCatchAStar();
-    this.checkIfPlayerCollidesObstacle();
     this.generateStars();
     this.generateObstacles();
+    this.checkIfPlayerCollidesObstacle();
   }
-
-  gameOver() {
-    //this.Main.createGameOverScreen();
-  };
 
   _assignControlsToKeys() {
     //console.log("Asignando controles");
@@ -199,13 +185,7 @@ class Game {
   start() { //how to automatize this function when the play starts?
     this._assignControlsToKeys();
     this.music()
-    // const interval = setInterval(this._update.bind(this), 550); //my time refresh
-    // if (!this.interval) { //undefined
-    //   interval
-    // } else {
-    //   clearInterval(interval);
-    // }
-
+    this.player.alive = true;
     this.interval = setInterval(this._update.bind(this), 550);
   };
 
