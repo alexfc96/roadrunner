@@ -85,20 +85,19 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         gameOverScreen.innerHTML = `             
         <h2>GAME OVER!</h2>
         <p>You have taken ${stars} stars</p></hr>
-        <p>Play again?</p><br>
+        <p>Play again?</p>
         <input id="btn-restart-game-screen" type="button" value="RESTART GAME">`
         let btnRestartGame = document.getElementById("btn-restart-game-screen");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
     function startMusic() {
         console.log("Cargando musica");
-        music.play()
+        music.play();
     }
 
     // Start the classes Game and the new player
     game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen, startMusic);
 
-    //game.start()
     const startScreen = document.getElementById("start-screen");
     const gameScreen = document.getElementById("game-screen");
     const winScreen = document.getElementById("win-screen");
@@ -108,5 +107,5 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     const music = document.getElementById("music")
 
     //btnStartGameScreen.addEventListener('click', game.start);  //debería de poder ejecutar game.start()
-
+    //game.start()
 })

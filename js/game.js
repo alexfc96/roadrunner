@@ -53,6 +53,7 @@ class Game {
   drawPlayer() {
     //console.log("Pintamos al player")
     let x = this.player.position.x; //para sacar el contenido de la x
+    //creo que lo conveniente sería controlar el row en función de la y. Para la pos la x pero nth(${y})not working...
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
     row[x].classList.add("player-block");
     this.playerCatchAStar()  //with this the player can catch stars horizontally
@@ -136,6 +137,7 @@ class Game {
         this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
         this.stop();
         this.player.alive = false;
+        this.gameOver();
       }
     }
   }
@@ -196,8 +198,12 @@ class Game {
       this.interval = undefined;
     }
   }
-
-  //this.start(); why is not working?
+  gameOver() {
+    this.player.position.x = 1;
+    this.player.position.y = 0;
+    this.road.roadPosition.x = 0;
+    this.road.roadPosition.y = 4;
+  }
 }
 
 //game1 = new Game()
