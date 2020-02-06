@@ -136,18 +136,17 @@ h1 {
   color: black;
   margin-bottom: 4%;
   font-weight: bold;
-
 }
 
 #win-screen #btn-resume-game {
   font-size: 1.7em;
-  padding: 1.2%;
+  padding: 1%;
   background-color: #7DBD9D;
 }
 
 #win-screen #btn-restart-game {
   font-size: 1.7em;
-  padding: 1.2%;
+  padding: 1%;
   background-color: #7DBD9D;
 }
 

@@ -103,8 +103,11 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     const winScreen = document.getElementById("win-screen");
     const gameOverScreen = document.getElementById("game-over-screen");
     const btnStartGameScreen = document.getElementById("btn-start-game");
-    btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
-    const music = document.getElementById("music")
+    btnStartGameScreen.addEventListener('click', function () {//clicking the main button starts the game
+        createGameScreen();
+        game.start();
+    })
+    const music = document.getElementById("music");
 
     //btnStartGameScreen.addEventListener('click', game.start);  //debería de poder ejecutar game.start()
     //game.start()
