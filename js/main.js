@@ -15,7 +15,10 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         <p>Use the arrow keys for move the player</p>
         <p>Game created by: Alex Fernández</p>` //adding the code
         const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
-        btnStartGameScreen.addEventListener('click', createGameScreen);  //debería de poder ejecutar game.start()
+        btnStartGameScreen.addEventListener('click', function () {//clicking the main button starts the game
+            createGameScreen();
+            game.move();
+        })
     }
 
     function createGameScreen() { //the screen where the user plays the game
@@ -47,7 +50,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         </div>          
         <div class="rows-blocks" data-y="0">
             <div class="block" data-x="0"></div>
-            <div class="block" data-x="1"></div> <!--Initial position of the player and we need to change the class to the siblings-->
+            <div class="block" data-x="1"></div> <!--Initial position of the player-->
             <div class="block" data-x="2"></div>
         </div>`
     }
@@ -70,8 +73,8 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         btnResumeGame.addEventListener('click', function () {
             winScreen.style = "display: none";
             gameScreen.style = "display";
-        }); //esto debría habilitar display gameScreen y no volver a crearla
-        //btnResumeGame.addEventListener('click', gameScreen.style = "display");
+            game.move();
+        });
         let btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
@@ -80,7 +83,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         console.log("createGameOverScreen");
         gameOverScreen.style = "display";
         startScreen.style = "display: none";
-        gameScreen.style = "display: none"; //hidding the gameScreen
+        gameScreen.style = "display: none";
         winScreen.style = "display: none";
         gameOverScreen.innerHTML = `             
         <h2>GAME OVER!</h2>
@@ -108,7 +111,4 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         game.start();
     })
     const music = document.getElementById("music");
-
-    //btnStartGameScreen.addEventListener('click', game.start);  //debería de poder ejecutar game.start()
-    //game.start()
 })

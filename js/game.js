@@ -10,7 +10,6 @@ class Game {
     this.lose = lose;
     this.isPaused = true;
     this.music = music;
-    //this.start() //si pongo esto, se asignan los controles pero, no se ve reflejado en la pantalla.
   }
 
   drawRoad() {
@@ -113,6 +112,7 @@ class Game {
     if (this.player.collectedStars == 5) {
       console.log("Victorioso");
       this.win(this.player.collectedStars);
+      this.pause();
     }
   }
 
@@ -161,12 +161,12 @@ class Game {
     //console.log("Asignando controles");
     document.addEventListener('keydown', e => {
       switch (e.keyCode) {
-        // case 38: // arrow up  //maybe the button up works for jump and also the space tab
-        //   this.removePlayer();
-        //   //let y = this.road.roadPosition.y - 4;
-        //   this.player.jump();
-        //   this.drawPlayerJumping();
-        //   break;
+        case 38: // arrow up  //maybe the button up works for jump and also the space tab
+          this.removePlayer();
+          //let y = this.road.roadPosition.y - 4;
+          this.player.jump();
+          this.drawPlayerJumping();
+          break;
         case 37: // arrow left
           this.removePlayer();
           this.player.goLeft();
@@ -177,23 +177,40 @@ class Game {
           this.player.goRight();
           this.drawPlayer();
           break;
-        //case 80: // p pause
-        //this.snake.intervalId ? this.snake.stop() : this.snake.move();
-        //break;
+        case 80: // p pause
+          if (this.interval) {
+            this.stop()
+          } else {
+            this.move()
+          }
+          break;
       }
     });
   }
 
-  start() { //how to automatize this function when the play starts?
+  start() {
     this._assignControlsToKeys();
-    this.music()
+    this.music();
     this.player.alive = true;
-    this.interval = setInterval(this._update.bind(this), 550);
+    this.move();
   };
+
+  move() {
+    if (!this.interval) {
+      this.interval = setInterval(this._update.bind(this), 550);
+    }
+  }
+  pause() {
+    if (this.interval) {
+      this.stop()
+    } else {
+      this.move()
+    }
+  }
 
   stop() {
     if (this.interval) {
-      console.log("Fin")
+      console.log("Fin");
       clearInterval(this.interval);
       this.interval = undefined;
     }
@@ -201,9 +218,8 @@ class Game {
   gameOver() {
     this.player.position.x = 1;
     this.player.position.y = 0;
+    this.player.collectedStars = 0;
     this.road.roadPosition.x = 0;
     this.road.roadPosition.y = 4;
   }
 }
-
-//game1 = new Game()
