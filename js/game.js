@@ -198,6 +198,7 @@ class Game {
   move() {
     if (!this.interval) {
       this.interval = setInterval(this._update.bind(this), 550);
+      this.player.alive = true;
     }
   }
   pause() {
