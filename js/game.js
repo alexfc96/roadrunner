@@ -1,19 +1,17 @@
 class Game {
   constructor(player, road, star, win, lose, music) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
-    this.player = player; //creo las opciones en main creando el player
+    this.player = player; //vinculating the methods and properties of my player
     this.road = road;
     this.star = star;
-    this.interval = undefined;
-    this.blocks = document.querySelectorAll(".block");
+    this.interval = undefined; //start like undef for enter in the condition
     this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //the position of the player
-    this.win = win;
+    this.win = win;  //options created in main.js
     this.lose = lose;
     this.isPaused = true;
     this.music = music;
   }
 
-  drawRoad() {
-
+  drawRoad() {  //painting the road
     this.rows = document.querySelectorAll(".rows-blocks");
     for (let i = 0; i < this.rows.length; i++) {
       if (this.rows[i].dataset.y % 2 == 0) {
@@ -48,8 +46,8 @@ class Game {
 
   drawPlayer() {
 
-    let x = this.player.position.x; //para sacar el contenido de la x
-    let y = this.player.position.y; //para sacar el contenido de la x
+    let x = this.player.position.x; //content of x position
+    let y = this.player.position.y; //cpntent of y position
     if (y == 2) {
       let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
       row.children[x].classList.add("player-block");
@@ -100,7 +98,6 @@ class Game {
         let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
         let playerPosition = row.querySelector(".player-block");
         if (playerPosition.classList.contains("star-block")) {
-          console.log("Estrella");
           this.player.collectedStars += 1;
           this.checkIfPlayerWin()
           this.removeStars();
@@ -109,7 +106,6 @@ class Game {
         let row = document.querySelector("#game-screen>.rows-blocks:nth-child(4)")
         let playerPosition = row.querySelector(".player-block");
         if (playerPosition.classList.contains("star-block")) {
-          console.log("Estrella");
           this.player.collectedStars += 1;
           this.checkIfPlayerWin()
           this.removeStars();
@@ -118,7 +114,6 @@ class Game {
     } else {
       let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
       if (playerPosition.classList.contains("star-block")) {
-        console.log("Estrella");
         this.player.collectedStars += 1;
         this.checkIfPlayerWin()
         this.removeStars();
@@ -178,8 +173,7 @@ class Game {
         let playerPosition = row.querySelector(".player-block");
         if (playerPosition.classList.contains("obstacle-block")) {
           if (this.player.alive) {
-            console.log("Obstaculo");
-            this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+            this.lose(this.player.collectedStars);  //creates the gameoverscreen
             this.stop();
             this.player.alive = false;
             this.gameOver();
@@ -191,8 +185,7 @@ class Game {
         let playerPosition = row.querySelector(".player-block");
         if (playerPosition.classList.contains("obstacle-block")) {
           if (this.player.alive) {
-            console.log("Obstaculo");
-            this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+            this.lose(this.player.collectedStars);
             this.stop();
             this.player.alive = false;
             this.gameOver();
@@ -203,8 +196,7 @@ class Game {
       let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
       if (playerPosition.classList.contains("obstacle-block")) {
         if (this.player.alive) {
-          console.log("Obstaculo");
-          this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+          this.lose(this.player.collectedStars);
           this.stop();
           this.player.alive = false;
           this.gameOver();
@@ -221,11 +213,10 @@ class Game {
     this.removeLastChildOfRoad();
     this.addNewRowToTheRoad();
     this.drawRoad();
-    console.log(this.player.position.y)
-    if (this.player.position.y === 0) {
+    if (this.player.position.y === 0) { //checking if the player jumps and the y>0
       this.drawPlayer();
     } else {
-      this.player.position.y = this.player.position.y - 1
+      this.player.position.y = this.player.position.y - 1;
     }
     this.generateStars();
     this.generateObstacles();

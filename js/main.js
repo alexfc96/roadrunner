@@ -1,20 +1,17 @@
-let game; //hace falta porque si no no es una variable global
-let main;
-main = document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
+let game; //with this creates the variable global and we can call the functions outside
+document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
 
     function createStartScreen() { //the first display showing the title of the game
         startScreen.style = "display";
         winScreen.style = "display: none";
         gameOverScreen.style = "display: none";
         gameScreen.style = "display: none"; //hiding the startScreen for put the gameScreen
-        console.log("createStartScreen")
-        //const startScreen = document.getElementById("start-screen"); //selecting the div that will contain the structure of the display
         startScreen.innerHTML = `                       
         <h2> Welcome to RoadRunneR</h2> 
         <input id="btn-start-game" type="button" value="START GAME"> 
         <p>Use the arrow keys to move the player</p>
         <p>Game created by: Alex Fernández</p>` //adding the code
-        const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
+        const btnStartGameScreen = document.getElementById("btn-start-game"); //selecting the button
         btnStartGameScreen.addEventListener('click', function () {//clicking the main button starts the game
             createGameScreen();
             game.move();
@@ -22,7 +19,6 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     }
 
     function createGameScreen() { //the screen where the user plays the game
-        console.log("createGameScreen")
         gameScreen.style = "display";
         winScreen.style = "display: none";
         gameOverScreen.style = "display: none";
@@ -56,7 +52,6 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
     }
 
     function createWinScreen(stars) {
-        console.log("creating winScreen");
         winScreen.style = "display";
         startScreen.style = "display: none";
         gameOverScreen.style = "display: none";
@@ -94,11 +89,10 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         btnRestartGame.addEventListener('click', createStartScreen);
     }
     function startMusic() {
-        console.log("Cargando musica");
         music.play();
     }
 
-    // Start the classes Game and the new player
+    // Start the classes Game and the new player and passing the functions that the game needs
     game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen, startMusic);
 
     const startScreen = document.getElementById("start-screen");

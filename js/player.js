@@ -1,11 +1,11 @@
 class Player {
   constructor(x, y) {
-    this.position = {
+    this.position = {  //coords of the position of my player
       x: x,
       y: y
     };
     this.collectedStars = 0;
-    this.alive = true;
+    this.alive = true;  //flag to know if my player is alive
   }
 
   goRight() {

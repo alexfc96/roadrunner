@@ -8,7 +8,7 @@ class Road {
     this.game = game;
   }
 
-  moveRoad(x, y) { //movimiento de los bloques pero no el de mi player
+  moveRoad(x, y) { //movement of the road but not the player*
     y = y + 1
     this.roadPosition = {
       x: x,
