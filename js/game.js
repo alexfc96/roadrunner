@@ -5,7 +5,7 @@ class Game {
     this.star = star;
     this.interval = undefined;
     this.blocks = document.querySelectorAll(".block");
-    this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //all the blocks in list
+    this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //the position of the player
     this.win = win;
     this.lose = lose;
     this.isPaused = true;
@@ -13,7 +13,6 @@ class Game {
   }
 
   drawRoad() {
-    //console.log("pintar drawboard")
 
     this.rows = document.querySelectorAll(".rows-blocks");
     for (let i = 0; i < this.rows.length; i++) {
@@ -27,7 +26,6 @@ class Game {
   };
 
   addNewRowToTheRoad() {
-    //console.log("Añadiendo una nueva row al road")
 
     let y = this.road.roadPosition["y"];
     let gameScreen = document.getElementById("game-screen").innerHTML;
@@ -43,7 +41,6 @@ class Game {
   }
 
   removeLastChildOfRoad() {
-    //console.log("Eliminando ultima row(donde se encuentra el player)")
     let gameScreenRows = document.getElementById("game-screen")
     gameScreenRows.removeChild(gameScreenRows.lastChild)
 
@@ -132,7 +129,6 @@ class Game {
 
   checkIfPlayerWin() {
     if (this.player.collectedStars == 5) {
-      console.log("Victorioso");
       this.win(this.player.collectedStars);
       this.pause();
     }
@@ -226,20 +222,16 @@ class Game {
     } else {
       this.player.position.y = this.player.position.y - 1
     }
-    //this.playerCatchAStar();
     this.generateStars();
     this.generateObstacles();
-    //this.checkIfPlayerCollidesObstacle();
   }
 
   _assignControlsToKeys() {
-    //console.log("Asignando controles");
     document.addEventListener('keydown', e => {
       switch (e.keyCode) {
         case 38: // arrow up 
           if (this.player.position.y === 0) {
             this.removePlayer();
-            //let y = this.road.roadPosition.y - 4;
             this.player.jump();
             this.drawPlayer();
           }
@@ -287,7 +279,6 @@ class Game {
   }
   stop() {
     if (this.interval) {
-      console.log("Fin");
       clearInterval(this.interval);
       this.interval = undefined;
     }
