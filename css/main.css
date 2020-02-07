@@ -72,12 +72,9 @@ h1 {
 .block {
   display: flex;
   flex-direction: row;
-  /*padding: 5%;*/
-  /*height: 6%;*/
   width: 100%;
   border: 1px solid white;
   overflow: hidden;
-  /*Recordad que oculta el contenido!!!*/
 }
 
 .player-block {

@@ -1,8 +1,7 @@
 class Game {
-  constructor(player, road, star, win, lose, music) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
+  constructor(player, road, win, lose, music) { //hace referencia al newPlayer que creo en la llamada a la creción del Game y el new Player
     this.player = player; //vinculating the methods and properties of my player
     this.road = road;
-    this.star = star;
     this.interval = undefined; //start like undef for enter in the condition
     this.playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block"); //the position of the player
     this.win = win;  //options created in main.js
@@ -259,7 +258,6 @@ class Game {
     this.player.alive = true;
     this.move();
   };
-
   move() {
     if (!this.interval) {
       this.interval = setInterval(this._update.bind(this), 550);

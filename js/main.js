@@ -1,4 +1,5 @@
 let game; //with this creates the variable global and we can call the functions outside
+
 document.addEventListener('DOMContentLoaded', (event) => { //when all the document is loaded{
 
     function createStartScreen() { //the first display showing the title of the game
@@ -65,17 +66,29 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
         <input id="btn-restart-game" type="button" value="RESTART GAME">        
         `
         const btnResumeGame = document.getElementById("btn-resume-game");
+        document.addEventListener("keyup", function (event) {
+            switch (event.keyCode) {
+                case 13: // enter key
+                    document.getElementById("btn-resume-game").click();
+                    winScreen.style = "display: none";
+                    gameScreen.style = "display";
+                    game.move();
+                    break;
+            }
+        });
+        /* code working but try to work the enter button
+        const btnResumeGame = document.getElementById("btn-resume-game");
         btnResumeGame.addEventListener('click', function () {
             winScreen.style = "display: none";
             gameScreen.style = "display";
             game.move();
         });
+        */
         let btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
 
     function createGameOverScreen(stars) { //the game over screen 
-        console.log("createGameOverScreen");
         gameOverScreen.style = "display";
         startScreen.style = "display: none";
         gameScreen.style = "display: none";
@@ -88,12 +101,13 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
         let btnRestartGame = document.getElementById("btn-restart-game-screen");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
+
     function startMusic() {
         music.play();
     }
 
     // Start the classes Game and the new player and passing the functions that the game needs
-    game = new Game(new Player(1, 0), new Road(0, 4), new Star(), createWinScreen, createGameOverScreen, startMusic);
+    game = new Game(new Player(1, 0), new Road(0, 4), createWinScreen, createGameOverScreen, startMusic);
 
     const startScreen = document.getElementById("start-screen");
     const gameScreen = document.getElementById("game-screen");
