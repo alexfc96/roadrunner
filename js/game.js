@@ -50,28 +50,26 @@ class Game {
   }
 
   drawPlayer() {
-    //console.log("Pintamos al player")
+
     let x = this.player.position.x; //para sacar el contenido de la x
-    //creo que lo conveniente sería controlar el row en función de la y. Para la pos la x pero nth(${y})not working...
-    let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
-    row[x].classList.add("player-block");
+    let y = this.player.position.y; //para sacar el contenido de la x
+    if (y == 2) {
+      let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
+      row.children[x].classList.add("player-block");
+    } else if (y == 1) {
+      let row = document.querySelector("#game-screen>.rows-blocks:nth-child(4)")
+      row.children[x].classList.add("player-block");
+    } else {
+      let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
+      row[x].classList.add("player-block");
+    }
     this.playerCatchAStar()  //with this the player can catch stars horizontally
     this.checkIfPlayerCollidesObstacle() //check if the player collides horizontally
   };
 
-  drawPlayerJumping() {
-    let x = this.player.position.x; //para sacar el contenido de la x
-    let y = this.player.position.y; //para sacar el contenido de la y
+  removePlayer() {
 
-    // let row = document.querySelectorAll('.rows-blocks:nth-child(${y})');
-    let row = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
-    row[x].classList.add("player-block");
-
-  };
-
-  removePlayer() {  //acordarse de revisar esto una vez consiga que el player salta
-    //console.log("Borrando player")
-    let x = this.player.position.x; //para sacar el contenido de la x
+    let x = this.player.position.x;
     let row = document.querySelectorAll("#game-screen>.rows-blocks:last-child>.block");
     row[0].classList.remove("player-block");
     row[1].classList.remove("player-block");
@@ -82,7 +80,7 @@ class Game {
     row4[1].classList.remove("player-block");
     row4[2].classList.remove("player-block");
 
-    let y = this.player.position.y; //para sacar el contenido de la y
+    let y = this.player.position.y;
     let row3 = document.querySelectorAll("#game-screen>.rows-blocks:nth-child(3)>.block");
     row3[0].classList.remove("player-block");
     row3[1].classList.remove("player-block");
@@ -90,7 +88,6 @@ class Game {
   };
 
   generateStars() {
-    //let firstRow = document.querySelector("#game-screen>.rows-blocks:first-child>.block");
     let firstRow = document.querySelector(".rows-blocks:first-child");
     let num = Math.floor(Math.random() * 5);
     if (num < 3) {
@@ -99,13 +96,38 @@ class Game {
   };
 
   playerCatchAStar() {
-    let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    if (playerPosition.classList.contains("star-block")) {
-      console.log("Estrella");
-      this.player.collectedStars += 1;
-      this.checkIfPlayerWin()
-      this.removeStars();
+    let y = this.player.position.y;
+    if (y > 0) {
+
+      if (y == 2) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
+        let playerPosition = row.querySelector(".player-block");
+        if (playerPosition.classList.contains("star-block")) {
+          console.log("Estrella");
+          this.player.collectedStars += 1;
+          this.checkIfPlayerWin()
+          this.removeStars();
+        }
+      } else if (y == 1) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(4)")
+        let playerPosition = row.querySelector(".player-block");
+        if (playerPosition.classList.contains("star-block")) {
+          console.log("Estrella");
+          this.player.collectedStars += 1;
+          this.checkIfPlayerWin()
+          this.removeStars();
+        }
+      }
+    } else {
+      let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+      if (playerPosition.classList.contains("star-block")) {
+        console.log("Estrella");
+        this.player.collectedStars += 1;
+        this.checkIfPlayerWin()
+        this.removeStars();
+      }
     }
+
   }
 
   checkIfPlayerWin() {
@@ -117,8 +139,24 @@ class Game {
   }
 
   removeStars() {
-    let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    playerPosition.classList.remove("star-block");
+
+    let y = this.player.position.y;
+    if (y > 0) {
+
+      if (y == 2) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
+        let playerPosition = row.querySelector(".player-block");
+        playerPosition.classList.remove("star-block");
+      }
+      else if (y == 1) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(4)")
+        let playerPosition = row.querySelector(".player-block");
+        playerPosition.classList.remove("star-block");
+      }
+    } else {
+      let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
+      playerPosition.classList.remove("star-block");
+    }
   }
 
   generateObstacles() {
@@ -130,14 +168,46 @@ class Game {
   };
 
   checkIfPlayerCollidesObstacle() {
-    let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block")
-    if (playerPosition.classList.contains("obstacle-block")) {
-      if (this.player.alive) {
-        console.log("Obstaculo");
-        this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
-        this.stop();
-        this.player.alive = false;
-        this.gameOver();
+
+    let y = this.player.position.y;
+    if (y > 0) {
+
+      if (y == 2) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(3)")
+        let playerPosition = row.querySelector(".player-block");
+        if (playerPosition.classList.contains("obstacle-block")) {
+          if (this.player.alive) {
+            console.log("Obstaculo");
+            this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+            this.stop();
+            this.player.alive = false;
+            this.gameOver();
+          }
+        }
+      }
+      else if (y == 1) {
+        let row = document.querySelector("#game-screen>.rows-blocks:nth-child(4)")
+        let playerPosition = row.querySelector(".player-block");
+        if (playerPosition.classList.contains("obstacle-block")) {
+          if (this.player.alive) {
+            console.log("Obstaculo");
+            this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+            this.stop();
+            this.player.alive = false;
+            this.gameOver();
+          }
+        }
+      }
+    } else {
+      let playerPosition = document.querySelector("#game-screen>.rows-blocks:last-child>.player-block");
+      if (playerPosition.classList.contains("obstacle-block")) {
+        if (this.player.alive) {
+          console.log("Obstaculo");
+          this.lose(this.player.collectedStars);  //crea el código html de la pantalla(es una función del main.js)
+          this.stop();
+          this.player.alive = false;
+          this.gameOver();
+        }
       }
     }
   }
@@ -150,22 +220,29 @@ class Game {
     this.removeLastChildOfRoad();
     this.addNewRowToTheRoad();
     this.drawRoad();
-    this.drawPlayer();
-    this.playerCatchAStar();
+    console.log(this.player.position.y)
+    if (this.player.position.y === 0) {
+      this.drawPlayer();
+    } else {
+      this.player.position.y = this.player.position.y - 1
+    }
+    //this.playerCatchAStar();
     this.generateStars();
     this.generateObstacles();
-    this.checkIfPlayerCollidesObstacle();
+    //this.checkIfPlayerCollidesObstacle();
   }
 
   _assignControlsToKeys() {
     //console.log("Asignando controles");
     document.addEventListener('keydown', e => {
       switch (e.keyCode) {
-        case 38: // arrow up  //maybe the button up works for jump and also the space tab
-          this.removePlayer();
-          //let y = this.road.roadPosition.y - 4;
-          this.player.jump();
-          this.drawPlayerJumping();
+        case 38: // arrow up 
+          if (this.player.position.y === 0) {
+            this.removePlayer();
+            //let y = this.road.roadPosition.y - 4;
+            this.player.jump();
+            this.drawPlayer();
+          }
           break;
         case 37: // arrow left
           this.removePlayer();
@@ -208,7 +285,6 @@ class Game {
       this.move()
     }
   }
-
   stop() {
     if (this.interval) {
       console.log("Fin");

@@ -87,19 +87,9 @@ h1 {
   background-size: 120px;
   background-repeat: no-repeat;
   background-position: center center;
-
-  /*
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  /*padding: 5%;*/
-  /*height: 6%;*/
-
   width: 100%;
   border: 1px solid white;
   overflow: hidden;
-  /*Recordad que oculta el contenido!!!*/
 }
 
 .star-block {
@@ -164,8 +154,8 @@ h1 {
 #game-over-screen h2 {
   font-size: 2.3em;
   text-align: center;
-  color: black;
-  margin-bottom: 4%;
+  color: rgb(240, 0, 0);
+  margin: 1%;
   font-weight: bold;
 }
 
