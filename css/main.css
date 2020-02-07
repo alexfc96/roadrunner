@@ -23,8 +23,6 @@ h1 {
   /*height: 860px;*/
   margin: auto;
   width: 70%;
-  /*margin: 3% 15%;
-  /*solid 1px*/
   border-style: solid;
 }
 
@@ -42,7 +40,7 @@ h1 {
   text-align: center;
   color: black;
   font-weight: bold;
-  margin: 40px;
+  margin: 35px;
 }
 #start-screen p {
   font-size: 1.2em;
@@ -50,7 +48,7 @@ h1 {
 }
 #start-screen #btn-start-game {
   font-size: 1.8em;
-  padding: 3%;
+  padding: 2.5%;
   background-color: #7DBD9D;
 }
 
@@ -126,8 +124,12 @@ h1 {
   font-size: 2.1em;
   text-align: center;
   color: black;
-  margin-bottom: 4%;
+  margin: 50px;
   font-weight: bold;
+}
+#win-screen p{
+  font-size: 1.2em;
+  margin: 40px;
 }
 
 #win-screen #btn-resume-game {
@@ -157,6 +159,10 @@ h1 {
   color: rgb(240, 0, 0);
   margin: 1%;
   font-weight: bold;
+}
+#game-over-screen p{
+  font-size: 1.2em;
+  margin: 40px;
 }
 
 #game-over-screen #btn-restart-game-screen {

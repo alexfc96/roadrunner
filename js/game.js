@@ -157,9 +157,14 @@ class Game {
 
   generateObstacles() {
     let firstRow = document.querySelector(".rows-blocks:first-child");
-    let num = Math.floor(Math.random() * 5);
+    let row = document.querySelector("#game-screen>.rows-blocks:nth-child(2)")
+    let num = Math.floor(Math.random() * 4);
+
     if (num < 3) {
-      firstRow.children[num].classList.add("obstacle-block");
+      if (row.children[1].classList.contains("obstacle-block")) {
+      } else {
+        firstRow.children[num].classList.add("obstacle-block");
+      }
     }
   };
 

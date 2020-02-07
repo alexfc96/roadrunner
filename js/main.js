@@ -12,7 +12,7 @@ main = document.addEventListener('DOMContentLoaded', (event) => { //when all the
         startScreen.innerHTML = `                       
         <h2> Welcome to RoadRunneR</h2> 
         <input id="btn-start-game" type="button" value="START GAME"> 
-        <p>Use the arrow keys for move the player</p>
+        <p>Use the arrow keys to move the player</p>
         <p>Game created by: Alex Fernández</p>` //adding the code
         const btnStartGameScreen = document.getElementById("btn-start-game"); //agregado pero comentado en el constructor de game.js
         btnStartGameScreen.addEventListener('click', function () {//clicking the main button starts the game
