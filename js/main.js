@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
         <p>You want to return to the main page?</p>
         <input id="btn-restart-game" type="button" value="RESTART GAME">        
         `
+        /*
         const btnResumeGame = document.getElementById("btn-resume-game");
         document.addEventListener("keyup", function (event) {
             switch (event.keyCode) {
@@ -76,14 +77,15 @@ document.addEventListener('DOMContentLoaded', (event) => { //when all the docume
                     break;
             }
         });
-        /* code working but try to work the enter button
+        */
+
         const btnResumeGame = document.getElementById("btn-resume-game");
         btnResumeGame.addEventListener('click', function () {
             winScreen.style = "display: none";
             gameScreen.style = "display";
             game.move();
         });
-        */
+
         let btnRestartGame = document.getElementById("btn-restart-game");
         btnRestartGame.addEventListener('click', createStartScreen);
     }
